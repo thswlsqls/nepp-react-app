@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import MyComponent from './components/MyComponent';
+import Counter from './components/Counter';
+import Say from './components/Say';
+import EventPractice from './components/EventPractice';
+import IterationSample from './components/IterationSample';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <MyComponent name='react' name2='react2'>
+        <h1>안녕안녕</h1>
+      </MyComponent>
+      //열린 태그와 닫힌 태그 사이의 값을 children으로 전달할 수 있다. 
+      <MyComponent name='vue' name2='angular' />
+      */}
+      {/* <Counter /> */}
+      {/* <Say /> */}
+      {/* <EventPractice /> */}
+      <IterationSample />
+    </>
   );
-}
+};
 
 export default App;
