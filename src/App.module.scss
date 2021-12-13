@@ -48,3 +48,48 @@
 /* .react2 {
   border: 12px solid rgb(238, 253, 215);
 } */
+
+// .react-2 > .box {
+//   background: blue;
+//   width: 100px;
+//   height: 100px;
+// }
+// .react-2 > .box.red {
+//   background: red;
+//   width: 100px;
+//   height: 100px;
+// }
+
+// .react-2 > .box.orange {
+//   background: orange;
+//   width: 100px;
+//   height: 100px;
+// }
+
+$orange: #fd7e14;
+
+.react-2 {
+  .box {
+    width: 100px;
+    height: 100px;
+    background: blue;
+    @media screen and (max-width: 768px) {
+      background: green;
+    }
+    &.orange {
+      // background: orange;
+      background: $orange;
+    }
+    &.red {
+      background: red;
+    }
+    // & + .box {
+    //   margin-top: 10px;
+    //   &:hover {
+    //     background: black;
+    //   }
+    // }
+  }
+}
+//  &는 자기자긴
+//

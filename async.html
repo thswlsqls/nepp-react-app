@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // p 357
+      // #1
+      // let number = 0;
+      // function increase(callback) {
+      //   setTimeout(() => {
+      //     console.log(++number);
+      //     callback(callback);
+      //   }, 1000);
+      // }
+
+      // increase(0, (result) => {
+      //   console.log(result);
+      //   increase(result, (result) => {
+      //     console.log(result);
+      //     increase(result, (result) => {
+      //       console.log(result);
+      //     });
+      //   });
+      // });
+
+      // increase(increase); // 무한 재귀 호출
+
+      // // #1-1
+      // const a = () => {
+      //   b();
+      // };
+      // const b = () => {
+      //   a();
+      // };
+      // a(); // 콜스택 최대 개수 초과 오류가 발생함, 약 16000개?
+
+      // #2 Promise
+      function increase(number) {
+        const promise = new Promise((resolve, reject) => {
+          settimeout(() => {
+            const result = number + 10;
+            if (result > 50) {
+              const e = new Error('Number Too big');
+              return reject(e);
+            }
+            resolve(result);
+          }, 1000);
+        });
+      }
+      // 프로미스 함수는 프로미스 객체를 리턴함
+
+      // #3 async await
+      async function runTasks() {
+        try {
+          let result = await increase(0);
+          console.log(result);
+          result = await increase(result);
+          console.log(result);
+          result = await increase(result);
+          console.log(result);
+          result = await increase(result);
+          console.log(result);
+          result = await increase(result);
+          console.log(result);
+          result = await increase(result);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+      runTasks();
+
+      // #2 Promise
+      increase(0)
+        .then((number) => {
+          // 함수 종료시, 리졸브 값을 받아와 함수실행함
+          console.log(number);
+          return increase(number);
+        })
+        .then((number) => {
+          console.log(number);
+          return increase(number);
+        })
+        .then((number) => {
+          console.log(number);
+          return increase(number);
+        })
+        .catch((e) => {
+          console.log(e); // reject발생했을 때는 에러를 받아옴
+        });
+    </script>
+  </body>
+</html>
